@@ -1,7 +1,8 @@
+<!-- auth/register.blade.php -->
 @extends('layouts.app')
 
 @section('content')
-<div class="card" style="max-width: 500px; margin: 0 auto;">
+<div class="card">
     <div class="card-header">Register</div>
     <div class="card-body">
         <form method="POST" action="{{ route('register.submit') }}">
@@ -10,7 +11,7 @@
                 <label for="name" class="form-label">Name</label>
                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
                 @error('name')
-                    <span class="text-danger">{{ $message }}</span>
+                    <span style="color: var(--secondary); font-size: 0.9rem;">{{ $message }}</span>
                 @enderror
             </div>
 
@@ -18,7 +19,7 @@
                 <label for="email" class="form-label">Email Address</label>
                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
                 @error('email')
-                    <span class="text-danger">{{ $message }}</span>
+                    <span style="color: var(--secondary); font-size: 0.9rem;">{{ $message }}</span>
                 @enderror
             </div>
 
@@ -26,7 +27,7 @@
                 <label for="password" class="form-label">Password</label>
                 <input id="password" type="password" class="form-control" name="password" required>
                 @error('password')
-                    <span class="text-danger">{{ $message }}</span>
+                    <span style="color: var(--secondary); font-size: 0.9rem;">{{ $message }}</span>
                 @enderror
             </div>
 
@@ -35,17 +36,14 @@
                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
             </div>
 
-            <div class="form-group" style="margin-top: 1.5rem;">
-                <button type="submit" class="btn btn-primary" style="width: 100%;">
-                    Register
-                </button>
-            </div>
-
-            <div style="text-align: center; margin-top: 1rem;">
-                <p>Already have an account? <a href="{{ route('login') }}">Login</a></p>
+            <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem;">
+                <button type="submit" class="btn btn-primary">Register</button>
+                <p style="text-align: center; color: var(--text-light);">
+                    Already have an account? 
+                    <a href="{{ route('login') }}" style="color: var(--primary); text-decoration: none;">Login</a>
+                </p>
             </div>
         </form>
     </div>
 </div>
 @endsection
-

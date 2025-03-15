@@ -18,9 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
 
 // Authentication Routes
 Route::middleware('guest')->group(function () {
@@ -36,13 +34,12 @@ Route::middleware('auth')->group(function () {
 });
 
 
-// Route::middleware('auth')->group(function () {
-    //Route::post('/logout', action: [AuthController::class, 'logout'])->name('logout');
+
     
-    // Task routes
-    Route::resource('tasks', TaskController::class);
-    Route::patch('/tasks/{task}/toggle-complete', [TaskController::class, 'toggleComplete'])->name('tasks.toggle-complete');
-// });
+// Task routes
+Route::resource('tasks', TaskController::class);
+Route::patch('/tasks/{task}/toggle-complete', [TaskController::class, 'toggleComplete'])->name('tasks.toggle-complete');
+
 
 Route::post('/logout', function (Request $request) {
     session()->forget('user');
